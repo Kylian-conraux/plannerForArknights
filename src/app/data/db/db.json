@@ -1,0 +1,186 @@
+{
+    "operators": [
+        {
+            "id": 0,
+            "name": "Exusiai",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 1500,
+                "atk": 500,
+                "def": 150,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Charging Shot",
+                    "desc": "Single powerful shot",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Barrage",
+                    "desc": "Unleashes a burst of shots",
+                    "level": 7
+                },
+                {
+                    "name": "S3: Overloading",
+                    "desc": "Fires multiple shots in quick succession",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Angel’s Blessing",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "Sniper Scope",
+                    "talent": "Enhances range and critical hit rate",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Texas",
+            "rarity": 5,
+            "elite": 2,
+            "stats": {
+                "hp": 1500,
+                "atk": 500,
+                "def": 150,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Charging Shot",
+                    "desc": "Single powerful shot",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Sword rain",
+                    "desc": "Unleashes a burst of swords",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Angel’s Blessing",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "Sniper Scope",
+                    "talent": "Enhances range and critical hit rate",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Cutter",
+            "rarity": 4,
+            "elite": 2,
+            "stats": {
+                "hp": 1500,
+                "atk": 500,
+                "def": 150,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Charging Shot",
+                    "desc": "Single powerful shot",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Barrage",
+                    "desc": "Unleashes a burst of shots",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Angel’s Blessing",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "Sniper Scope",
+                    "talent": "Enhances range and critical hit rate",
+                    "level": 1
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Melantha",
+            "rarity": 3,
+            "elite": 1,
+            "stats": {
+                "hp": 1500,
+                "atk": 500,
+                "def": 150,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Charging Shot",
+                    "desc": "Single powerful shot",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Angel’s Blessing",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 4,
+            "name": "Yato",
+            "rarity": 2,
+            "elite": 0,
+            "stats": {
+                "hp": 1500,
+                "atk": 500,
+                "def": 150,
+                "res": 0
+            },
+            "skills": [],
+            "talents": [
+                {
+                    "name": "Angel’s Blessing",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 5,
+            "name": "ThermEx",
+            "rarity": 1,
+            "elite": 0,
+            "stats": {
+                "hp": 1500,
+                "atk": 500,
+                "def": 150,
+                "res": 0
+            },
+            "skills": [],
+            "talents": [
+                {
+                    "name": "Angel’s Blessing",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": []
+        }
+    ]
+}
