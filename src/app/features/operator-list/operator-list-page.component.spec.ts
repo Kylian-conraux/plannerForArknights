@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OperatorListComponent } from './operator-list.component';
+import { OperatorListComponentPage } from './operator-list-page.component';
 
 describe('OperatorListComponent', () => {
-  let component: OperatorListComponent;
-  let fixture: ComponentFixture<OperatorListComponent>;
+  let component: OperatorListComponentPage;
+  let fixture: ComponentFixture<OperatorListComponentPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OperatorListComponent]
+      imports: [OperatorListComponentPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OperatorListComponent);
+    fixture = TestBed.createComponent(OperatorListComponentPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
