@@ -29,7 +29,7 @@ export class OperatorService {
     }
 
     return this.http.get<Operator[]>(this.apiUrl).pipe(
-      map(operators => operators.sort((a, b) => a.rarity - b.rarity)), //sort in low to high rarity
+     // map(operators => operators.sort((a, b) => a.rarity - b.rarity)), //sort in low to high rarity
       tap(data => { this.operatorCache = data; localStorage.setItem('operatorCache', JSON.stringify(data)); }), // Store in memory
       catchError(this.handleError)
     );
