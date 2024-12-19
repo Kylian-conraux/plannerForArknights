@@ -1,4 +1,4 @@
-<app-header (menuToggle)="menuToggle()"></app-header>
+<app-header (menuToggle)="toggleMenu()"></app-header>
 <mat-sidenav-container autosize="true">
     <mat-sidenav [ngClass]="!isCollapsed ? 'expanded' : ''" [mode]="isMobile ? 'over' : 'side'"
         [opened]="isMobile ? 'false' : 'true'">
