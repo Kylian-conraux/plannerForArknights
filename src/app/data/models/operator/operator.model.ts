@@ -1,6 +1,8 @@
 export interface Operator{
     id: number;
-    name: string; 
+    name: string;
+    class: string;
+    job: string; 
     rarity: number;
     elite: number;
     stats: {
