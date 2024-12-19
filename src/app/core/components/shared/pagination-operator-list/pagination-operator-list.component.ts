@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-
+import { NgFor, NgIf } from '@angular/common';
 @Component({
   selector: 'app-pagination-operator-list',
-  imports: [],
+  imports: [NgFor, NgIf],
   templateUrl: './pagination-operator-list.component.html',
   styleUrl: './pagination-operator-list.component.scss'
 })
