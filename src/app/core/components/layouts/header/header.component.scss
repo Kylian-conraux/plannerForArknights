@@ -1,0 +1,10 @@
+.mat-toolbar.mat-primary {
+    --mat-toolbar-container-background-color: #dda31f !important;
+}
+
+
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
