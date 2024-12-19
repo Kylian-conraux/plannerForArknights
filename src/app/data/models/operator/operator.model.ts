@@ -1,8 +1,8 @@
-export interface Operator{
+export interface Operator {
     id: number;
     name: string;
     class: string;
-    job: string; 
+    job: string;
     rarity: number;
     elite: number;
     stats: {
@@ -16,18 +16,18 @@ export interface Operator{
     modules: Module[];
 }
 
-export interface Skill{
+export interface Skill {
     name: string,
     desc: string,
     level: number
 }
 
-export interface Talent{
+export interface Talent {
     name: string,
     desc: string,
 }
 
-export interface Module{
+export interface Module {
     name: string,
     talent: string,
     level: number,
@@ -38,4 +38,4 @@ export interface OperatorFilters {
     rarity: number | null;
     page: number;
     pageSize: number;
-  }
+}

@@ -3,8 +3,8 @@
         {
             "id": 0,
             "name": "Exusiai",
-            "class":"Sniper",
-            "job":"Marksman",
+            "class": "Sniper",
+            "job": "Marksman",
             "rarity": 6,
             "elite": 2,
             "stats": {
@@ -47,8 +47,8 @@
         {
             "id": 1,
             "name": "Texas",
-            "class":"Vanguard",
-            "job":"Pioneer",
+            "class": "Vanguard",
+            "job": "Pioneer",
             "rarity": 5,
             "elite": 2,
             "stats": {
@@ -86,8 +86,8 @@
         {
             "id": 2,
             "name": "Cutter",
-            "class":"Guard",
-            "job":"Swordmaster",
+            "class": "Guard",
+            "job": "Swordmaster",
             "rarity": 4,
             "elite": 2,
             "stats": {
@@ -125,8 +125,8 @@
         {
             "id": 3,
             "name": "Melantha",
-            "class":"Guard",
-            "job":"Dreadnought",
+            "class": "Guard",
+            "job": "Dreadnought",
             "rarity": 3,
             "elite": 1,
             "stats": {
@@ -153,8 +153,8 @@
         {
             "id": 4,
             "name": "Yato",
-            "class":"Vanguard",
-            "job":"Pioneer",
+            "class": "Vanguard",
+            "job": "Pioneer",
             "rarity": 2,
             "elite": 0,
             "stats": {
@@ -175,8 +175,8 @@
         {
             "id": 5,
             "name": "THRM-EX",
-            "class":"Specialist",
-            "job":"Executor",
+            "class": "Specialist",
+            "job": "Executor",
             "rarity": 1,
             "elite": 0,
             "stats": {

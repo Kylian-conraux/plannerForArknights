@@ -1,1 +1,18 @@
-<p>operator-card works!</p>
+<div class="operator-card" [attr.data-rarity]="operator.rarity">
+    <div class="operator-header">
+        <h3 class="operator-name">{{operator.name}}</h3>
+        <div class="rarity">
+            <span *ngFor="let star of stars">⭐</span>
+        </div>
+    </div>
+    <div class="operator-content">
+        <div class="row-details">
+            <span class="label">Classe : </span>
+            <span class="value">{{operator.class}}</span>
+        </div>
+        <div class="row-details">
+            <span class="label">Job : </span>
+            <span class="value">{{operator.job}}</span>
+        </div>
+    </div>
+</div>
