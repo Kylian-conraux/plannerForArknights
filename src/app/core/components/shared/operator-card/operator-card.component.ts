@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
 import { Operator } from '../../../../data/models/operator/operator.model';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-operator-card',
-  imports: [NgFor, NgIf],
+  imports: [NgFor],
   templateUrl: './operator-card.component.html',
   styleUrl: './operator-card.component.scss'
 })
