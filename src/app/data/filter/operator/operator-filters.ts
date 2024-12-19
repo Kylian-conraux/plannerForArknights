@@ -2,7 +2,7 @@ import { Operator, OperatorFilters } from "../../models/operator/operator.model"
 
 export function filterOperators(operators: Operator[], filters: OperatorFilters): Operator[]{
     let filtered = [...operators];
-
+   
     if(filters.searchQuery.trim()){
         const query = filters.searchQuery.toLocaleLowerCase();
         filtered = filtered.filter(op =>

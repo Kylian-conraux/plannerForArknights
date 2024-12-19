@@ -18,19 +18,19 @@ export class OperatorService {
 
   private operatorCache!: Operator[];
 
-
   constructor(private http: HttpClient) { }
 
 
   getOperators(): Observable<Operator[]> {
-    if (this.operatorCache) {
-      
-      return of(this.operatorCache); // Return in-memory cached data
+    const cachedData = localStorage.getItem('operatorCache');
+    if (cachedData) {
+      this.operatorCache = JSON.parse(cachedData);
+      return of(this.operatorCache);
     }
-    
+
     return this.http.get<Operator[]>(this.apiUrl).pipe(
       map(operators => operators.sort((a, b) => a.rarity - b.rarity)), //sort in low to high rarity
-      tap(data => this.operatorCache = data), // Store in memory
+      tap(data => { this.operatorCache = data; localStorage.setItem('operatorCache', JSON.stringify(data)); }), // Store in memory
       catchError(this.handleError)
     );
   }
@@ -39,14 +39,24 @@ export class OperatorService {
     return this.http.get<Operator>(`${this.apiUrl}/${id}`);
   }
 
+  clearCache() {
+    this.operatorCache = [];
+    localStorage.removeItem('operatorCache');
+  }
+
+
   private handleError(error: HttpErrorResponse) {
     console.error('An error occurred:', error.message);
     return throwError(() => new Error('Something went wrong; please try again later.'));
   }
 
-  getPaginatedoperators(filters: OperatorFilters): PaginatedResult<Operator>{
-    const filteredOperators = filterOperators(this.operatorCache, filters);
+  getPaginatedoperators(filters: OperatorFilters): PaginatedResult<Operator> {
+    const cachedData = localStorage.getItem('operatorCache');
+    if (cachedData) {
+      this.operatorCache = JSON.parse(cachedData);
+    }
 
-    return createPaginationResult(this.operatorCache, {currentPage: filters.page, pageSize: filters.pageSize, totalItems: filteredOperators.length},filteredOperators);
-  }  
+    const filteredOperators = filterOperators(this.operatorCache, filters);
+    return createPaginationResult(this.operatorCache, { currentPage: filters.page, pageSize: filters.pageSize, totalItems: filteredOperators.length }, filteredOperators);
+  }
 }
