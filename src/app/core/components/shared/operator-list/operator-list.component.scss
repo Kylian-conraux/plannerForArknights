@@ -1,0 +1,32 @@
+.operators-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(220px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    min-height: 400px;
+}
+
+.result-info{
+    text-align: center;
+    color: #2a3f77;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .operators-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      padding: 0.5rem;
+    }
+}
+
+app-pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

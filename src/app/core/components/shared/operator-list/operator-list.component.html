@@ -1,0 +1,14 @@
+<div class="operators-grid">
+    <app-operator-card
+    *ngFor="let operator of paginatedResult.items"
+    [operator]="operator"></app-operator-card>
+</div>
+
+<app-pagination-operator-list
+[currentPage]="paginatedResult.currentPage"
+[totalPages]="paginatedResult.totalPages"
+(pageChange)="pageChange.emit($event)"></app-pagination-operator-list>
+
+<div class="results-info">
+    Actuellement {{ paginatedResult.items.length }} des {{ paginatedResult.total }} opérateurs affichés.
+  </div>
