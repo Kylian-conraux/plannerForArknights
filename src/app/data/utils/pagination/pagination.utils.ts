@@ -1,4 +1,4 @@
-import { PaginatedResult, PaginationConfig } from "../../models/pagination.interface";
+import { PaginatedResult, PaginationConfig } from "../../interface/pagination/pagination.interface";
 
 export function createPaginationResult<T>(items: T[], config: PaginationConfig, filteredItems: T[]): PaginatedResult<T>{
     const total = filteredItems.length;

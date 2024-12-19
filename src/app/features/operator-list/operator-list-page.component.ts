@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { Operator, OperatorFilters } from '../../data/models/operator/operator.model';
 import { PaginatedResult } from '../../data/interface/pagination/pagination.interface';
@@ -8,14 +9,19 @@ import { OperatorListComponent } from '../../core/components/shared/operator-lis
 
 
 @Component({
-  selector: 'app-operator-list',
-  imports: [],
+  selector: 'app-operator-list-page',
+  imports: [OperatorListComponent],
   templateUrl: './operator-list-page.component.html',
   styleUrl: './operator-list-page.component.scss'
 })
 export class OperatorListComponentPage implements OnInit {
 
+
+
   operators: Operator[] = [];
+
+  private subscription: Subscription = new Subscription();
+
 
   filters: OperatorFilters = {
     searchQuery: '',
@@ -35,28 +41,34 @@ export class OperatorListComponentPage implements OnInit {
 
 
   constructor(private operatorService: OperatorService,
-              private route: Router
-  ){
+    private route: Router
+  ) {
 
   }
 
   ngOnInit(): void {
+    
     this.loadOperator();
+    this.loadOperators();
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   /**
    * 
    */
-  private loadOperator(){
+  private loadOperator() {
     this.operatorService.getOperators().subscribe({
-      next: (data) =>{
+      next: (data) => {
         this.operators = data;
       },
-      error: (err) =>{
+      error: (err) => {
         console.error('Failed to load operators:', err);
       }
-    })
+    });
+   
   }
 
 
@@ -64,7 +76,27 @@ export class OperatorListComponentPage implements OnInit {
    * 
    * @param operator 
    */
-  private onTileClick(operator: Operator):void{
-      this.route.navigate(['/operator',operator.id]);
+  private onTileClick(operator: Operator): void {
+    this.route.navigate(['/operator', operator.id]);
   }
+
+  onFiltersChange(newFilters: OperatorFilters) {
+    this.filters = {
+      ...newFilters,
+      page: 1
+    };
+    this.loadOperators();
   }
+
+  onPageChange(page: number) {
+    this.filters = {
+      ...this.filters,
+      page
+    };
+    this.loadOperators();
+  }
+
+  private loadOperators() {
+    this.paginatedResult = this.operatorService.getPaginatedoperators(this.filters);
+  }
+}
