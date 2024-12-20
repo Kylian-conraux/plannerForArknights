@@ -1,1 +1,4 @@
-<p>search-bar works!</p>
+<div class="search-wrap">
+    <input [(ngModel)]="searchQuery" (ngModelChange)="onSearch()" class="search-input" placeholder="Entrez le nom, la classe ou le job ...">
+    <i class="search-icon">🔍</i>
+</div>

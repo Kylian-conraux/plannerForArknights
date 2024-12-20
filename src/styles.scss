@@ -20,6 +20,27 @@ html {
 
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
+/**
+My global styles
+*/
+:root {
+  /* Color palette */
+  --primary-color: #2c3e50;
+  --secondary-color: #34495e;
+  --accent-color: #3498db;
+  --background-color: #f5f6fa;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  
+  /* Layout */
+  --border-radius: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
