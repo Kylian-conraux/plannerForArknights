@@ -36,9 +36,9 @@ export class OperatorService {
     // Sinon, effectue une requête HTTP pour récupérer les données.
     return this.http.get<Operator[]>(this.apiUrl).pipe(
       // Stocke les données dans le cache local et localStorage.
-      tap(data => { 
-        this.operatorCache = data; 
-        localStorage.setItem('operatorCache', JSON.stringify(data)); 
+      tap(data => {
+        this.operatorCache = data;
+        localStorage.setItem('operatorCache', JSON.stringify(data));
       }),
       catchError(this.handleError) // Gestion des erreurs.
     );
@@ -87,9 +87,18 @@ export class OperatorService {
 
     // Crée et retourne le résultat paginé.
     return createPaginationResult(
-      this.operatorCache, 
-      { currentPage: filters.page, pageSize: filters.pageSize, totalItems: filteredOperators.length }, 
+      this.operatorCache,
+      { currentPage: filters.page, pageSize: filters.pageSize, totalItems: filteredOperators.length },
       filteredOperators
     );
+  }
+
+  getAllclass(): string[] {
+    const cachedData = localStorage.getItem('operatorCache');
+    if(cachedData){
+      this.operatorCache = JSON.parse(cachedData)
+    }
+    
+    return [... new Set(this.operatorCache.map(op => op.class))].sort();
   }
 }
