@@ -22,3 +22,31 @@ html {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+/**
+Define all color for each rarity of operator (1 - 6)
+*/
+$rarity-colors: (
+  1: rgb(61, 59, 59), // Gray for rarity 1
+  2: yellow, // Dark Gray for rarity 2
+  3: #3498db, // Blue for rarity 3
+  4: #8e44ad, // Purple for rarity 4
+  5: #FFD500, // Orange for rarity 5
+  6: #e67e22 // Gold for rarity 6
+);
+
+/**
+Define all color above for each card of operator
+*/
+@each $rarity, $color in $rarity-colors {
+  .operator-card[data-rarity="#{$rarity}"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, $color, adjust-color($color, $lightness: +25%));
+  }
+}

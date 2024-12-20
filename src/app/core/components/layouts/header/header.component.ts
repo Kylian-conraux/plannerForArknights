@@ -11,6 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 export class HeaderComponent {
   @Output() menuToggle = new EventEmitter<void>();
 
+  /**
+   * This method is called when the user click on the button to deploy the side bar or minimze it
+   */
   onMenuToggle() {
     this.menuToggle.emit();
   }
