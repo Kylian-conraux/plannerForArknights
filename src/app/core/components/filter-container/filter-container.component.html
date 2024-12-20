@@ -1,1 +1,5 @@
-<p>filter-container works!</p>
+<div class="filter-container">
+    <app-search-bar 
+    [operatorName]="opFilter.searchQuery"
+    (search)="onSearch($event)"></app-search-bar>
+</div>
