@@ -23,13 +23,18 @@ export class AppComponent implements OnInit {
 
   title = 'plannerForArknights';
 
+  // Référence au composant MatSidenav pour manipuler la barre latérale
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
+
+  // Indique si l'application est en mode mobile (true si largeur < 800px)
   isMobile = true;
+  // Indique si la barre latérale est en mode "réduite"
   isCollapsed = true;
 
   constructor(private observer: BreakpointObserver) { }
 
+  // Initialise l'état de l'interface utilisateur en fonction de la taille de l'écran
   ngOnInit() {
     this.observer.observe(['(max-width: 800px)']).subscribe((screenSize) => {
       if (screenSize.matches) {
@@ -40,11 +45,14 @@ export class AppComponent implements OnInit {
     });
   }
 
+  // Méthode pour basculer l'état du menu latéral
   toggleMenu() {
     if (this.isMobile) {
+      // En mode mobile, on ouvre ou ferme simplement le menu
       this.sidenav.toggle();
       this.isCollapsed = false;
     } else {
+       // En mode bureau, on ouvre le menu si réduit ou on le réduit si ouvert
       this.sidenav.open();
       this.isCollapsed = !this.isCollapsed;
     }

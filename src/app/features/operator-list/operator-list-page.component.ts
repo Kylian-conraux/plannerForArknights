@@ -17,12 +17,14 @@ import { OperatorListComponent } from '../../core/components/shared/operator-lis
 export class OperatorListComponentPage implements OnInit {
 
 
-
+ // Liste des opérateurs chargés
   operators: Operator[] = [];
 
+  // Subscription pour gérer les flux d'observables et éviter les fuites de mémoire
   private subscription: Subscription = new Subscription();
 
 
+  // Filtres appliqués à la liste des opérateurs
   filters: OperatorFilters = {
     searchQuery: '',
     rarity: null,
@@ -30,6 +32,7 @@ export class OperatorListComponentPage implements OnInit {
     pageSize: 14
   };
 
+   // Résultat paginé des opérateurs
   paginatedResult: PaginatedResult<Operator> = {
     items: [],
     total: 0,
@@ -47,9 +50,9 @@ export class OperatorListComponentPage implements OnInit {
   }
 
   ngOnInit(): void {
-    
-    this.loadOperator();
-    this.loadOperators();
+
+    this.loadOperator();// Charge la liste simple des opérateurs
+    this.loadOperators();// Charge la liste paginée des opérateurs
   }
 
   ngOnDestroy(): void {
@@ -57,7 +60,7 @@ export class OperatorListComponentPage implements OnInit {
   }
 
   /**
-   * 
+   * Charge une liste d'opérateurs sans pagination
    */
   private loadOperator() {
     this.operatorService.getOperators().subscribe({
@@ -68,26 +71,35 @@ export class OperatorListComponentPage implements OnInit {
         console.error('Failed to load operators:', err);
       }
     });
-   
+
   }
 
 
   /**
-   * 
-   * @param operator 
+   * Navigue vers la page d'un opérateur spécifique
+   * @param operator L'opérateur cliqué
    */
   private onTileClick(operator: Operator): void {
     this.route.navigate(['/operator', operator.id]);
   }
 
+
+  /**
+   * Met à jour les filtres et recharge la liste paginée des opérateurs
+   * @param newFilters Les nouveaux filtres à appliquer
+   */
   onFiltersChange(newFilters: OperatorFilters) {
     this.filters = {
-      ...newFilters,
+      ...newFilters,// Fusionne les nouveaux filtres avec les filtres existants
       page: 1
     };
     this.loadOperators();
   }
 
+  /**
+   * Change la page active et recharge les opérateurs
+   * @param page Numéro de la nouvelle page
+   */
   onPageChange(page: number) {
     this.filters = {
       ...this.filters,
@@ -96,6 +108,9 @@ export class OperatorListComponentPage implements OnInit {
     this.loadOperators();
   }
 
+   /**
+   * Charge les opérateurs en fonction des filtres appliqués avec pagination
+   */
   private loadOperators() {
     this.paginatedResult = this.operatorService.getPaginatedoperators(this.filters);
   }
