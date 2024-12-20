@@ -6,11 +6,12 @@ import { Operator, OperatorFilters } from '../../data/models/operator/operator.m
 import { PaginatedResult } from '../../data/interface/pagination/pagination.interface';
 import { OperatorService } from '../../core/services/operator.service';
 import { OperatorListComponent } from '../../core/components/shared/operator-list/operator-list.component';
+import { FilterContainerComponent } from "../../core/components/filter-container/filter-container.component";
 
 
 @Component({
   selector: 'app-operator-list-page',
-  imports: [OperatorListComponent],
+  imports: [OperatorListComponent, FilterContainerComponent],
   templateUrl: './operator-list-page.component.html',
   styleUrl: './operator-list-page.component.scss'
 })

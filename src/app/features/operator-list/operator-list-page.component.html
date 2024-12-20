@@ -1,1 +1,6 @@
-<app-operator-list [paginatedResult]="paginatedResult" (pageChange)="onPageChange($event)"></app-operator-list>
+<div class="container">
+
+    <app-filter-container [opFilter]="filters" (filterChange)="onFiltersChange($event)"></app-filter-container>
+
+    <app-operator-list [paginatedResult]="paginatedResult" (pageChange)="onPageChange($event)"></app-operator-list>
+</div>
