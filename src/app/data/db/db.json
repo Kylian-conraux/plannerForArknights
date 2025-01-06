@@ -193,6 +193,595 @@
                 }
             ],
             "modules": []
+        },
+        {
+            "id": 6,
+            "name": "Sussurro",
+            "class": "Medic",
+            "job": "Healer",
+            "rarity": 4,
+            "elite": 1,
+            "stats": {
+                "hp": 1000,
+                "atk": 300,
+                "def": 100,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Healing Light",
+                    "desc": "Heals all allies in range",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Healer’s Touch",
+                    "desc": "Increases healing effectiveness"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 7,
+            "name": "SilverAsh",
+            "class": "Guard",
+            "job": "Lord",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 2000,
+                "atk": 700,
+                "def": 300,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Truesilver Slash",
+                    "desc": "Deals massive damage to all enemies in range",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Tactical Command",
+                    "desc": "Increases attack and defense of all allies",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Leader’s Aura",
+                    "desc": "Increases ATK and DEF for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 8,
+            "name": "Hoshiguma",
+            "class": "Defender",
+            "job": "Duelist",
+            "rarity": 5,
+            "elite": 2,
+            "stats": {
+                "hp": 3000,
+                "atk": 400,
+                "def": 600,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Shield Bash",
+                    "desc": "Deals damage and stuns the enemy",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Iron Will",
+                    "desc": "Increases defense and resistance",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Iron Wall",
+                    "desc": "Increases DEF for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 9,
+            "name": "Saria",
+            "class": "Defender",
+            "job": "Healing Defender",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 3200,
+                "atk": 350,
+                "def": 700,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Healing Aura",
+                    "desc": "Heals all allies in range",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Fortify",
+                    "desc": "Increases defense and heals over time",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Medic’s Touch",
+                    "desc": "Increases healing effectiveness"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 10,
+            "name": "Eyjafjalla",
+            "class": "Caster",
+            "job": "Volcano",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 1200,
+                "atk": 800,
+                "def": 100,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Lava Burst",
+                    "desc": "Deals massive AoE damage",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Eruption",
+                    "desc": "Increases attack power and range",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Volcanic Might",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 11,
+            "name": "Ifrit",
+            "class": "Caster",
+            "job": "Burninator",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 1100,
+                "atk": 850,
+                "def": 90,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Flame Breath",
+                    "desc": "Deals continuous fire damage",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Inferno",
+                    "desc": "Increases attack power and burns enemies",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Flame Mastery",
+                    "desc": "Increases fire damage for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 12,
+            "name": "Siege",
+            "class": "Vanguard",
+            "job": "Pioneer",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 1700,
+                "atk": 550,
+                "def": 200,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Charge",
+                    "desc": "Charges forward and deals damage",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Rally",
+                    "desc": "Increases attack and defense of all allies",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Leader’s Aura",
+                    "desc": "Increases ATK and DEF for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 13,
+            "name": "Ch’en",
+            "class": "Guard",
+            "job": "Swordmaster",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 1800,
+                "atk": 650,
+                "def": 250,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Sword Rain",
+                    "desc": "Unleashes a burst of swords",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Flash",
+                    "desc": "Deals massive damage to a single target",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Swordmaster’s Aura",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 14,
+            "name": "Skadi",
+            "class": "Guard",
+            "job": "Hunter",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 1900,
+                "atk": 700,
+                "def": 200,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Deep Sea Strike",
+                    "desc": "Deals massive damage to a single target",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Abyssal Hunter",
+                    "desc": "Increases attack power and defense",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Hunter’s Instinct",
+                    "desc": "Increases ATK and DEF for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 15,
+            "name": "Lappland",
+            "class": "Guard",
+            "job": "Enmity",
+            "rarity": 5,
+            "elite": 2,
+            "stats": {
+                "hp": 1600,
+                "atk": 600,
+                "def": 150,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Wolf’s Howl",
+                    "desc": "Deals damage and silences the enemy",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Savage Bite",
+                    "desc": "Increases attack power and deals continuous damage",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Wolf’s Instinct",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 16,
+            "name": "Specter",
+            "class": "Guard",
+            "job": "Reaper",
+            "rarity": 5,
+            "elite": 2,
+            "stats": {
+                "hp": 1700,
+                "atk": 650,
+                "def": 200,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Scythe Slash",
+                    "desc": "Deals massive damage to all enemies in range",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Bloodthirst",
+                    "desc": "Increases attack power and heals over time",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Reaper’s Instinct",
+                    "desc": "Increases ATK for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 17,
+            "name": "Angelina",
+            "class": "Supporter",
+            "job": "Therapist",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 1400,
+                "atk": 500,
+                "def": 150,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Healing Wind",
+                    "desc": "Heals all allies in range",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Wind’s Embrace",
+                    "desc": "Increases attack and defense of all allies",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Therapist’s Touch",
+                    "desc": "Increases healing effectiveness"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 18,
+            "name": "Shining",
+            "class": "Medic",
+            "job": "Healer",
+            "rarity": 6,
+            "elite": 2,
+            "stats": {
+                "hp": 1200,
+                "atk": 400,
+                "def": 100,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Healing Light",
+                    "desc": "Heals all allies in range",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Radiant Shield",
+                    "desc": "Increases defense and heals over time",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Healer’s Touch",
+                    "desc": "Increases healing effectiveness"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 19,
+            "name": "Nightmare",
+            "class": "Caster",
+            "job": "Witch",
+            "rarity": 5,
+            "elite": 2,
+            "stats": {
+                "hp": 1100,
+                "atk": 700,
+                "def": 100,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Dark Pulse",
+                    "desc": "Deals massive magic damage",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Nightmare’s Grasp",
+                    "desc": "Increases attack power and range",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Witch’s Instinct",
+                    "desc": "Increases magic damage for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 20,
+            "name": "Blue Poison",
+            "class": "Sniper",
+            "job": "Venom",
+            "rarity": 5,
+            "elite": 2,
+            "stats": {
+                "hp": 1300,
+                "atk": 600,
+                "def": 100,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Poison Arrow",
+                    "desc": "Deals damage and poisons the enemy",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Venomous Bite",
+                    "desc": "Increases attack power and deals continuous damage",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Venom Mastery",
+                    "desc": "Increases poison damage for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 21,
+            "name": "Meteorite",
+            "class": "Sniper",
+            "job": "Artillery",
+            "rarity": 5,
+            "elite": 2,
+            "stats": {
+                "hp": 1400,
+                "atk": 650,
+                "def": 100,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Explosive Shot",
+                    "desc": "Deals massive AoE damage",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Artillery Barrage",
+                    "desc": "Increases attack power and range",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Artillery Mastery",
+                    "desc": "Increases AoE damage for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 22,
+            "name": "Platinum",
+            "class": "Sniper",
+            "job": "Marksman",
+            "rarity": 5,
+            "elite": 2,
+            "stats": {
+                "hp": 1300,
+                "atk": 600,
+                "def": 100,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Quick Shot",
+                    "desc": "Rapidly fires multiple shots",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Overload",
+                    "desc": "Increases attack speed",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Marksman’s Instinct",
+                    "desc": "Increases attack speed for all allies"
+                }
+            ],
+            "modules": []
+        },
+        {
+            "id": 23,
+            "name": "Astesia",
+            "class": "Guard",
+            "job": "Magic Swordsman",
+            "rarity": 5,
+            "elite": 2,
+            "stats": {
+                "hp": 1500,
+                "atk": 700,
+                "def": 200,
+                "res": 0
+            },
+            "skills": [
+                {
+                    "name": "S1: Magic Slash",
+                    "desc": "Deals massive magic damage",
+                    "level": 7
+                },
+                {
+                    "name": "S2: Enchanted Blade",
+                    "desc": "Increases attack power and range",
+                    "level": 7
+                }
+            ],
+            "talents": [
+                {
+                    "name": "Magic Mastery",
+                    "desc": "Increases magic damage for all allies"
+                }
+            ],
+            "modules": []
         }
     ]
 }
