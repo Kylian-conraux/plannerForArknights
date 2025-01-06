@@ -113,6 +113,13 @@ export class OperatorListComponentPage implements OnInit {
    * Charge les opérateurs en fonction des filtres appliqués avec pagination
    */
   private loadOperators() {
-    this.paginatedResult = this.operatorService.getPaginatedoperators(this.filters);
+    this.operatorService.getPaginatedoperators(this.filters).subscribe({
+      next: (data) => {
+        this.paginatedResult = data;
+      },
+      error: (err) => {
+        console.error('Failed to load paginated operators:', err);
+      }
+    });
   }
 }

@@ -16,10 +16,12 @@ export class FilterContainerComponent {
 
   @Output() filterChange = new EventEmitter<OperatorFilters>();
 
-  class: string[] = [];
+  classes: string[] = [];
 
   constructor(private operatorService: OperatorService){
-    this.class = this.operatorService.getAllclass();
+    this.operatorService.getAllClasses().subscribe(classes => {
+      this.classes = classes;
+    });
   }
 
   onSearch(query: string){
