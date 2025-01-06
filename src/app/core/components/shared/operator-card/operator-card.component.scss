@@ -7,11 +7,16 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .operator-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    .operator-name {
+        text-decoration: underline;
+        color: #02a799;
+    }
 }
 
 .operator-header {
