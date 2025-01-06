@@ -2,5 +2,5 @@
 
     <app-filter-container [opFilter]="filters" (filterChange)="onFiltersChange($event)"></app-filter-container>
 
-    <app-operator-list [paginatedResult]="paginatedResult" (pageChange)="onPageChange($event)"></app-operator-list>
+    <app-operator-list [paginatedResult]="paginatedResult" (pageChange)="onPageChange($event)" (operatorClick)="onTileClick($event)"></app-operator-list>
 </div>

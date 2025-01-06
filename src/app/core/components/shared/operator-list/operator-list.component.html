@@ -1,6 +1,6 @@
 <div class="operators-grid">
     <app-operator-card
-    *ngFor="let operator of paginatedResult.items"
+    *ngFor="let operator of paginatedResult.items" (click)="onOperatorClick(operator)"
     [operator]="operator"></app-operator-card>
 </div>
 

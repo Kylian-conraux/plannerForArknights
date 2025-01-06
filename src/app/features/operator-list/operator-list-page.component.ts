@@ -80,7 +80,7 @@ export class OperatorListComponentPage implements OnInit {
    * Navigue vers la page d'un opérateur spécifique
    * @param operator L'opérateur cliqué
    */
-  private onTileClick(operator: Operator): void {
+   onTileClick(operator: Operator): void {
     this.route.navigate(['/operator', operator.id]);
   }
 
@@ -122,4 +122,5 @@ export class OperatorListComponentPage implements OnInit {
       }
     });
   }
+  
 }

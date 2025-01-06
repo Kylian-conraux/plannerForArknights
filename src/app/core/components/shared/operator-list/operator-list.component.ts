@@ -16,4 +16,8 @@ export class OperatorListComponent {
   @Input() paginatedResult!: PaginatedResult<Operator>;
   @Output() pageChange = new EventEmitter<number>();
 
+  @Output() operatorClick = new EventEmitter<Operator>();
+  onOperatorClick(operator: Operator): void {
+    this.operatorClick.emit(operator);
+  }
 }
