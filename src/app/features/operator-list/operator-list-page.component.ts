@@ -30,7 +30,7 @@ export class OperatorListComponentPage implements OnInit {
     searchQuery: '',
     rarity: null,
     page: 1,
-    pageSize: 14
+    pageSize: 10
   };
 
    // Résultat paginé des opérateurs
