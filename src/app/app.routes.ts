@@ -14,6 +14,10 @@ export const routes: Routes = [
         loadComponent: () => import('./core/components/filter-container/filter-container.component').then(m => m.FilterContainerComponent)
     },
     {
+        path: 'operator/:id',
+        loadComponent: () => import('./features/operator-details/operator-details.component').then(m => m.OperatorDetailsComponent)
+    },
+    {
         path: '**',
         redirectTo: 'home' //redirection in case of wrong route
     }
