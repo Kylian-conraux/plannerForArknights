@@ -1,1 +1,47 @@
-<p>operator-details works!</p>
+<div *ngIf="hasOperator" class="operator-detail">
+    <h2>{{ operator!.name }} ({{ operator!.rarity }}★ and Elite : {{operator.elite}})</h2>
+
+    <!-- Stats Section -->
+    <h3>Stats</h3>
+    <ul>
+        <li>HP: {{ operator.stats.hp }}</li>
+        <li>ATK: {{ operator.stats.atk }}</li>
+        <li>DEF: {{ operator.stats.def }}</li>
+        <li>RES: {{ operator.stats.res }}</li>
+    </ul>
+
+    <!-- Skills Section (Only if there are skills) -->
+    <div *ngIf="operator.skills.length > 0">
+        <h3>Skills</h3>
+        <ul>
+            <li *ngFor="let skill of operator.skills">
+                <strong>{{ skill.name }}:</strong> {{ skill.desc }} (Level: {{ skill.level }})
+            </li>
+        </ul>
+    </div>
+
+    <!-- Talents Section (Only if there are talents) -->
+    <div *ngIf="operator.talents.length > 0">
+        <h3>Talents</h3>
+        <ul>
+            <li *ngFor="let talent of operator.talents">
+                <strong>{{ talent.name }}:</strong> {{ talent.desc }}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Modules Section (Only if there are modules) -->
+    <div *ngIf="operator.modules.length > 0">
+        <h3>Modules</h3>
+        <ul>
+            <li *ngFor="let module of operator.modules">
+                <strong>{{ module.name }}:</strong> {{ module.talent }}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Message if no additional info is available -->
+    <div *ngIf="!operator.skills?.length && !operator.talents?.length && !operator.modules?.length">
+        <p>This operator does not have additional information like skills, talents, or modules.</p>
+    </div>
+</div>
