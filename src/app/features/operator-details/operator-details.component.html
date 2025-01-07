@@ -1,43 +1,55 @@
 <div *ngIf="hasOperator" class="operator-detail">
-    <h2>{{ operator!.name }} ({{ operator!.rarity }}★ and Elite : {{operator.elite}})</h2>
+
+    <!-- Operator class & job -->
+    <section class="operator-header">
+
+        <h2>{{ operator!.name }} <br> <span> {{'⭐'.repeat(operator.rarity)}}</span> </h2>
+
+        <p>{{ operator.class }} - {{ operator.job }}</p>
+    </section>
 
     <!-- Stats Section -->
-    <h3>Stats</h3>
-    <ul>
-        <li>HP: {{ operator.stats.hp }}</li>
-        <li>ATK: {{ operator.stats.atk }}</li>
-        <li>DEF: {{ operator.stats.def }}</li>
-        <li>RES: {{ operator.stats.res }}</li>
-    </ul>
+    <section class="operator-stats">
+        <h3>Stats : </h3>
+        <div class="stats-grid">
+            <p>HP: {{ operator.stats.hp }}</p>
+            <p>ATK: {{ operator.stats.atk }}</p>
+            <p>DEF: {{ operator.stats.def }}</p>
+            <p>RES: {{ operator.stats.res }}</p>
+        </div>
+    </section>
 
     <!-- Skills Section (Only if there are skills) -->
     <div *ngIf="operator.skills.length > 0">
-        <h3>Skills</h3>
-        <ul>
-            <li *ngFor="let skill of operator.skills">
-                <strong>{{ skill.name }}:</strong> {{ skill.desc }} (Level: {{ skill.level }})
-            </li>
-        </ul>
+        <section class="operator-skills">
+            <h3>Skills</h3>
+            <div class="skill-block" *ngFor="let skill of operator.skills">
+                <h4>{{ skill.name }}:</h4>
+                <p>{{ skill.desc }}</p>
+            </div>
+        </section>
     </div>
 
     <!-- Talents Section (Only if there are talents) -->
     <div *ngIf="operator.talents.length > 0">
-        <h3>Talents</h3>
-        <ul>
-            <li *ngFor="let talent of operator.talents">
-                <strong>{{ talent.name }}:</strong> {{ talent.desc }}
-            </li>
-        </ul>
+        <section class="operator-talents">
+            <h3>Talents</h3>
+            <div class="talent-block" *ngFor="let talent of operator.talents">
+                <h4>{{ talent.name }}:</h4>
+                <p>{{ talent.desc }}</p>
+            </div>
+        </section>
     </div>
 
     <!-- Modules Section (Only if there are modules) -->
     <div *ngIf="operator.modules.length > 0">
-        <h3>Modules</h3>
-        <ul>
-            <li *ngFor="let module of operator.modules">
-                <strong>{{ module.name }}:</strong> {{ module.talent }}
-            </li>
-        </ul>
+        <section class="operator-modules">
+            <h3>Modules</h3>
+            <div class="talent-block" *ngFor="let module of operator.modules">
+                <h4>{{ module.name }}:</h4>
+                <p>{{ module.talent }}</p>
+            </div>
+        </section>
     </div>
 
     <!-- Message if no additional info is available -->
