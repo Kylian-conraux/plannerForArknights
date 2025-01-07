@@ -4,7 +4,7 @@ Ce projet a été généré à l'aide de [Angular CLI](https://github.com/angula
 
 ## ✨ Introduction : 
 
-Bienvenu sur mon projet **Planner for Arknights** (plannificateur). 
+Bienvenue sur mon projet **Planner for Arknights** (plannificateur). 
 Je me suis lancé dans ce projet pour :
   - Améliorer mes compétences et apprendre les bases du framework Angular
   - Rendre de nouveau accessible une fonctionnalité d'un site aujourd'hui inutilisable : la planification pour développer un opérateur
@@ -18,7 +18,7 @@ Je me suis lancé dans ce projet pour :
     - Extraire les données d'un fichier JSON.
     - Visualisation simple et claire des opérateurs.
  3. **Détails des opérateurs** : 
-    - En cliquant sur l'une des carte de la liste, on peut consulter les infos en détaillés (stats, compétences, etc.).
+    - En cliquant sur l'une des cartes de la liste, on peut consulter les infos détaillés (stats, compétences, etc.).
  4. **Mise en place d'un planner** :
     - Permettre de calculer, étape par étape, les ressources nécessaires pour développer un opérateur.
  5. **Optimisation UX** :
@@ -34,7 +34,7 @@ Je me suis lancé dans ce projet pour :
 
 ### Liste des opérateurs
 
-Comme illustré dans l'impression écran ci-dessous, vous pouvez parcourir une liste complète d'opérateurs. Chaque opérateur est affiché avec ses informations principales et est cliquable pour obtenir plus de détails.
+Comme illustré dans la capture d'écran ci-dessous, vous pouvez parcourir une liste complète d'opérateurs. Chaque opérateur est affiché avec ses informations principales et est cliquable pour obtenir plus de détails.
 
 ![Liste d'opérateur](./public/assets/sp-list-operator.png)
 
@@ -47,14 +47,14 @@ Une fois qu'un opérateur est sélectionné, sa fiche détaillée s'affiche (cap
 
 - **Framework** : Angular.
 - **Langages** : TypeScript, Html, scss.
-- **Gestions de données** : Fichier JSON local (temporaire, une API sera utilisé dans le futur).
+- **Gestions de données** : Fichier JSON local (temporaire, une API sera utilisée dans le futur).
 - **Versionnement** : Git
 
 ## 🏗️  Étapes futures
 
 - ⬜ Mettre en place des filtres pour trier les opérateurs (par classe, rareté, etc.).
 - ⬜ Développer la partie planner
-- ⬜ Créer la partie Back-end pour gérer et mettre à jours les données.
+- ⬜ Créer la partie Back-end pour gérer et mettre à jour les données.
 - ⬜ Héberger le projet sur une plateforme publique (GitHub Pages ou autre).
 
 ## Conclusion : 
