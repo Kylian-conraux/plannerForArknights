@@ -4,9 +4,9 @@ Ce projet a été généré à l'aide de [Angular CLI](https://github.com/angula
 
 ## ✨ Introduction : 
 
-Bienvenue sur mon projet **Planner for Arknights** (plannificateur). 
+Bienvenue sur mon projet **Planner for Arknights** (planificateur). 
 Je me suis lancé dans ce projet pour :
-  - Améliorer mes compétences et apprendre les bases du framework Angular
+  - Améliorer mes compétences et apprendre les bases du framework Angular.
   - Rendre de nouveau accessible une fonctionnalité d'un site aujourd'hui inutilisable : la planification pour développer un opérateur
 
 
@@ -14,7 +14,7 @@ Je me suis lancé dans ce projet pour :
 
  1. **Mettre en place les layouts du site** : 
     - Header, Footer et SideBar pour naviguer dans le site.
- 2. **Consulter une liste d'opérateur** :
+ 2. **Consulter une liste d'opérateurs** :
     - Extraire les données d'un fichier JSON.
     - Visualisation simple et claire des opérateurs.
  3. **Détails des opérateurs** : 
