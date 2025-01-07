@@ -7,7 +7,7 @@ Ce projet a été généré à l'aide de [Angular CLI](https://github.com/angula
 Bienvenu sur mon projet **Planner for Arknights** (plannificateur). 
 Je me suis lancé dans ce projet pour :
   - Améliorer mes compétences et apprendre les bases du framework Angular
-  - Rendre de nouveau accessible une fonctionalité d'un site aujourd'hui inutilisable : la plannification pour développer un opérateur
+  - Rendre de nouveau accessible une fonctionnalité d'un site aujourd'hui inutilisable : la planification pour développer un opérateur
 
 
 ## 🎯 Objectifs : 
