@@ -1,3 +1,10 @@
+<div class="container-operator-slected">
+    <p *ngIf="operator">Operateur : {{operator.name}}</p>
+    <p *ngIf="!operator">Sélectionnez un opérateur dans la liste ci-dessous.</p>
+</div>
+
+<div></div>
+
 
 <div class="container-operator-list">
     <app-filter-container [opFilter]="filters" (filterChange)="onFiltersChange($event)"></app-filter-container>
