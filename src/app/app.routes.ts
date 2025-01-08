@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { preloadGuard } from './core/guards/preload.guard';
 
 export const routes: Routes = [
     {
@@ -7,7 +8,8 @@ export const routes: Routes = [
     },
     {
         path: 'list',
-        loadComponent: () => import('./features/operator-list/operator-list-page.component').then(m => m.OperatorListComponentPage)
+        loadComponent: () => import('./features/operator-list/operator-list-page.component').then(m => m.OperatorListComponentPage),
+        canActivate: [preloadGuard]
     },
     {
         path: 'filter',
@@ -19,7 +21,8 @@ export const routes: Routes = [
     },
     {
         path: 'planner',
-        loadComponent: () => import('./features/planner/planner.component').then(m => m.PlannerComponent)
+        loadComponent: () => import('./features/planner/planner.component').then(m => m.PlannerComponent),
+        canActivate: [preloadGuard]
     },
     {
         path: '**',
