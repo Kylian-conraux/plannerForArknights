@@ -69,7 +69,14 @@ export abstract class BaseOperatorListPageComponent implements OnInit, OnDestroy
    * Charge les opérateurs et les résultats paginés.
    */
   ngOnInit(): void {
-    this.loadOperator();
+    this.operatorService.getOperators().subscribe({
+      next: (data) => {
+        this.operators = data;
+      },
+      error: (err) => {
+        console.error('Failed to load operators:', err);
+      }
+    });
     this.loadOperators();
   }
 
@@ -79,21 +86,6 @@ export abstract class BaseOperatorListPageComponent implements OnInit, OnDestroy
    */
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
-
-  /**
-   * Charge la liste des opérateurs.
-   * @private
-   */
-  private loadOperator() {
-    this.operatorService.getOperators().subscribe({
-      next: (data) => {
-        this.operators = data;
-      },
-      error: (err) => {
-        console.error('Failed to load operators:', err);
-      }
-    });
   }
 
   /**
