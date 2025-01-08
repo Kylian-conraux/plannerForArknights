@@ -18,6 +18,10 @@ export const routes: Routes = [
         loadComponent: () => import('./features/operator-details/operator-details.component').then(m => m.OperatorDetailsComponent)
     },
     {
+        path: 'planner',
+        loadComponent: () => import('./features/planner/planner.component').then(m => m.PlannerComponent)
+    },
+    {
         path: '**',
         redirectTo: 'home' //redirection in case of wrong route
     }
