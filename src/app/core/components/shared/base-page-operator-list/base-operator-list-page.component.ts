@@ -72,12 +72,13 @@ export abstract class BaseOperatorListPageComponent implements OnInit, OnDestroy
     this.operatorService.getOperators().subscribe({
       next: (data) => {
         this.operators = data;
+        this.loadOperators();
       },
       error: (err) => {
         console.error('Failed to load operators:', err);
       }
     });
-    this.loadOperators();
+    
   }
 
   /**
