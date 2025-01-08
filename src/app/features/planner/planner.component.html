@@ -1,1 +1,5 @@
-<p>planner works!</p>
+
+<div class="container-operator-list">
+    <app-filter-container [opFilter]="filters" (filterChange)="onFiltersChange($event)"></app-filter-container>
+    <app-operator-list [paginatedResult]="paginatedResult" (pageChange)="onPageChange($event)" (operatorClick)="onTileClick($event)"></app-operator-list>
+</div>

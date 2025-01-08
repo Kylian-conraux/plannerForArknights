@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Operator} from '../../data/models/operator/operator.model';
@@ -14,7 +14,7 @@ import { BaseOperatorListPageComponent } from '../../core/components/shared/base
   templateUrl: './operator-list-page.component.html',
   styleUrl: './operator-list-page.component.scss'
 })
-export class OperatorListComponentPage extends BaseOperatorListPageComponent implements OnInit {
+export class OperatorListComponentPage extends BaseOperatorListPageComponent {
 
 
   constructor(operatorService: OperatorService,
