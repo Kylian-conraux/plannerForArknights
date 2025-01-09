@@ -1,22 +1,27 @@
 import { inject } from '@angular/core';
 import { CanActivateFn } from '@angular/router';
 import { OperatorService } from '../services/operator.service';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 export const preloadGuard: CanActivateFn = (route, state) => {
   const operatorService = inject(OperatorService);
 
-  //console.log('PreloadGuard invoked for:', state.url);
+  console.log('PreloadGuard invoked for:', state.url);
 
-  // Preload data and allow or block navigation
   return operatorService.getOperators().pipe(
-    map((data) => {
-      return true; // Allow navigation
+    tap((operators) => {
+      if (operators && operators.length > 0) {
+        console.log('Preloading successful, data loaded:', operators);
+      } else {
+        console.warn('Preloading completed but no data found.');
+      }
     }),
     catchError((err) => {
       console.error('Error preloading operators:', err);
-      return of(false); // Block navigation on error
-    })
+      return of(null); // Continue navigation despite the error
+    }),
+    // Always return true to allow navigation
+    () => of(true)
   );
 };
