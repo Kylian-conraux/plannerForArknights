@@ -3,7 +3,9 @@
     <p *ngIf="!operator">Sélectionnez un opérateur dans la liste ci-dessous.</p>
 </div>
 
-<div></div>
+<div class="container-operator-progression">
+    <app-progression-configurator [formGroup]="formGroup" (formChange)="onFormChange($event)"></app-progression-configurator>    
+</div>
 
 
 <div class="container-operator-list">
