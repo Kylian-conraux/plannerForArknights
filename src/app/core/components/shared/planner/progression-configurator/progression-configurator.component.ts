@@ -81,6 +81,11 @@ export class ProgressionConfiguratorComponent implements OnInit {
       eliteToReachField?.setValue(1);
       this.fGroup.patchValue({ eliteToReach: 1 });
       this.allEliteOptions = [0, 1];
+    } else {
+      [skillField, skillToReachField, eliteField, eliteToReachField].forEach((field) => field?.enable());
+      this.allEliteOptions = [0, 1, 2];
+      eliteToReachField?.setValue(2);
+      this.fGroup.patchValue({ eliteToReach: 2 });
     }
 
     this.maxLevel = this.operatorService.getMaxLevelByRarityAndElite(rarity, elite);
@@ -117,12 +122,12 @@ export class ProgressionConfiguratorComponent implements OnInit {
 
   onSkillToReachChange(): void {
     const skillToReachValue = this.fGroup.get('skillToReach')?.value;
-    if(skillToReachValue < 7){
+    if (skillToReachValue < 7) {
       //this.operatorService.setIsMasteryAvailable(false);
-    }else{
+    } else {
       //this.plannerOperatorService.setIsMasteryAvailable(true);
     }
-    
+
   }
 
 
