@@ -78,6 +78,7 @@ export class ProgressionConfiguratorComponent implements OnInit {
       eliteToReachField?.setValue(0);
       [skillField, skillToReachField, eliteField, eliteToReachField].forEach((field) => field?.disable());
     } else if (rarity === 3) {
+      [skillField, skillToReachField, eliteField, eliteToReachField].forEach((field) => field?.enable());
       eliteToReachField?.setValue(1);
       this.fGroup.patchValue({ eliteToReach: 1 });
       this.allEliteOptions = [0, 1];

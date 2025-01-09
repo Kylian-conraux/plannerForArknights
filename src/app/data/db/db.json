@@ -200,7 +200,7 @@
             "class": "Medic",
             "job": "Healer",
             "rarity": 4,
-            "elite": 1,
+            "elite": 2,
             "stats": {
                 "hp": 1000,
                 "atk": 300,
