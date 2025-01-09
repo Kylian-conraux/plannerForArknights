@@ -8,7 +8,7 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Elite</mat-label>
-            <mat-select formControlName="elite">
+            <mat-select formControlName="elite" (selectionChange)="onEliteChange()">
                 <mat-option *ngFor="let elite of allEliteOptions" [value]="elite">
                     {{elite}}
                 </mat-option>
@@ -19,14 +19,15 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Level</mat-label>
-            <input matInput type="number" formControlName="level" min="1" max="maxLevel" (blur)="emptyForm()">
+            <input matInput type="number" formControlName="level" min="1" [max]="maxLevel"
+                (blur)="handleLevelToReachValidation()">
         </mat-form-field>
 
         <!--Skill dropdown -->
-        
+
         <mat-form-field appearance="fill">
             <mat-label>Skill</mat-label>
-            <mat-select formControlName="skill">
+            <mat-select formControlName="skill" (selectionChange)="updateDependantField('skill', 'skillToReach')">
                 <mat-option *ngFor="let skill of allSkillOptions" [value]="skill">
                     {{skill}}
                 </mat-option>
@@ -44,9 +45,11 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Elite to reach</mat-label>
-            <mat-select formControlName="eliteToReach">
-                <mat-option *ngFor="let elite of allEliteOptions" [value]="elite">
-                    {{elite}}
+            <mat-select formControlName="eliteToReach"
+                (selectionChange)="updateMaxLevelFieldWithElite(fGroup.get('eliteToReach')?.value)">
+                <mat-option *ngFor="let eliteToReach of allEliteOptions" [value]="eliteToReach"
+                    [disabled]="eliteToReach < fGroup.get('elite')?.value">
+                    {{eliteToReach}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
@@ -55,16 +58,18 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Level to reach</mat-label>
-            <input matInput type="number" formControlName="levelToReach" min="1" max="maxLevel" (blur)="emptyForm()">
+            <input matInput id="levelToReach" type="number" formControlName="levelToReach"
+                [min]="fGroup.get('level')?.value" [max]="maxLevel" (blur)="handleLevelToReachValidation()">
         </mat-form-field>
 
         <!-- Skill to reach dropdown -->
 
         <mat-form-field appearance="fill">
             <mat-label>Skill to reach</mat-label>
-            <mat-select formControlName="skillToReach">
-                <mat-option *ngFor="let skill of allSkillOptions" [value]="skill">
-                    {{skill}}
+            <mat-select formControlName="skillToReach" (selectionChange)="onSkillToReachChange()">
+                <mat-option *ngFor="let skillToReach of allSkillOptions" [value]="skillToReach"
+                    [disabled]="skillToReach < fGroup.get('skill')?.value">
+                    {{skillToReach}}
                 </mat-option>
             </mat-select>
         </mat-form-field>

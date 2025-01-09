@@ -35,6 +35,9 @@ export class PlannerComponent extends BaseOperatorListPageComponent {
 
   onTileClick(operator: Operator): void {
     this.operator = operator;
+    //i want to sent opereator to the progression configurator
+
+        
   }
 
   onFormChange(event: Event): void {

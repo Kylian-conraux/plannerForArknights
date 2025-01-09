@@ -13,6 +13,16 @@ import { createPaginationResult } from '../../data/utils/pagination/pagination.u
 })
 export class OperatorService {
 
+  private readonly allMaxLevelByRarityAndElite: { [keyRarity: number]: { [keyElite: number]: number } } = {
+    1: { 0: 30 },                   // Rarity 1 with Elite 0 has a max level of 30
+    2: { 0: 30 },                   // Rarity 2 with Elite 0 has a max level of 30
+    3: { 0: 40, 1: 55 },            // Rarity 3 has Elite 0 with 40, Elite 1 with 55
+    4: { 0: 45, 1: 60, 2: 70 },     // Rarity 4 has three levels: 45, 60, 70
+    5: { 0: 50, 1: 70, 2: 80 },     // Rarity 5 max levels for Elite 0, 1, 2
+    6: { 0: 50, 1: 80, 2: 90 },     // Rarity 6 max levels for Elite 0, 1, 2
+  };
+
+
   // URL de l'API des opérateurs
   private apiUrl = 'http://localhost:3000/operators';
 
@@ -104,4 +114,10 @@ export class OperatorService {
       catchError(this.handleError)
     );
   }
+
+  getMaxLevelByRarityAndElite(rarity: number, elite: number): number {
+    return this.allMaxLevelByRarityAndElite[rarity][elite] || 1; // Fallback to 1 if rarity is invalid
+  }
 }
+
+
