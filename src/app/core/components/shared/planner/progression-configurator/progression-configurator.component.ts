@@ -37,7 +37,13 @@ export class ProgressionConfiguratorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
+  }
+
+  ngOnChanges(): void {
+    if (this.operator) {
+      this.updateForms(this.operator.rarity, this.operator.elite);
+    }
   }
 
   handleLevelToReachValidation(): void {
