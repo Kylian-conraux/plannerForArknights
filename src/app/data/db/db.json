@@ -783,5 +783,55 @@
             ],
             "modules": []
         }
-    ]
-}
+    ],
+    "promotion-cost": [
+        {
+            "rarity": 3,
+            "promotion": [
+                {
+                    "elite": 1,
+                    "cost": 10000
+                }
+            ]
+        },
+        {
+            "rarity": 4,
+            "promotion": [
+                {
+                    "elite": 1,
+                    "cost": 15000
+                },
+                {
+                    "elite": 2,
+                    "cost": 60000
+                }
+            ]
+        },
+        {
+            "rarity": 5,
+            "promotion": [
+                {
+                    "elite": 1,
+                    "cost": 20000
+                },
+                {
+                    "elite": 2,
+                    "cost": 120000
+                }
+            ]
+        },
+        {
+            "rarity": 6,
+            "promotion": [
+                {
+                    "elite": 1,
+                    "cost": 30000
+                },
+                {
+                    "elite": 2,
+                    "cost": 180000
+                }
+            ]
+        }
+        ]
+    }
