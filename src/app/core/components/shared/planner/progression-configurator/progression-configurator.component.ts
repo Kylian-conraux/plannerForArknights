@@ -58,6 +58,10 @@ export class ProgressionConfiguratorComponent implements OnInit {
     }
   }
 
+  /**
+  * Met à jour les options de stage élite en fonction de la rareté.
+  * @param rarity Rareté de l'opérateur
+  */
   private updateEliteOptions(rarity: number): void {
     if (rarity === 3) {
       this.fGroup.patchValue({ eliteToReach: 1 });
@@ -68,6 +72,11 @@ export class ProgressionConfiguratorComponent implements OnInit {
     }
   }
 
+  /**
+  * Récupère un champ spécifique du formulaire.
+  * @param fieldName Nom du champ à récupérer
+  * @returns Le contrôle abstrait du champ
+  */
   private getField(fieldName: string): AbstractControl {
     const field = this.fGroup.get(fieldName);
     if (!field) {
@@ -76,7 +85,10 @@ export class ProgressionConfiguratorComponent implements OnInit {
     return field;
   }
 
-
+  /**
+     * Active les champs spécifiés.
+     * @param fields Liste des champs à activer
+     */
   enableFields(fields: AbstractControl[]): void {
     fields.forEach((field: AbstractControl) => {
       if (!field.enabled) {
@@ -85,6 +97,10 @@ export class ProgressionConfiguratorComponent implements OnInit {
     });
   }
 
+  /**
+  * Désactive les champs spécifiés.
+  * @param fields Liste des champs à désactiver
+  */
   disableFields(fields: AbstractControl[]): void {
     fields.forEach((field: AbstractControl) => {
       if (field.enabled) {
@@ -93,6 +109,10 @@ export class ProgressionConfiguratorComponent implements OnInit {
     });
   }
 
+  /**
+   * Vérifie et active/désactive les champs selon la rareté de l'opérateur.
+   * @param rarity Rareté de l'opérateur
+   */
   checkFieldsToEnable(rarity: number): void {
     const fieldsToDisable = [
       this.getField('skill'),
@@ -115,16 +135,20 @@ export class ProgressionConfiguratorComponent implements OnInit {
   }
 
   /**
-   * 
-   * @param value   the value to clamp 
-   * @param min   the minimum value
-   * @param max  the maximum value
-   * @returns the value if it is between min and max, otherwise the min or max value
-   */
+  * Limite une valeur entre un minimum et un maximum.
+  * @param value Valeur à limiter
+  * @param min Valeur minimale
+  * @param max Valeur maximale
+  * @returns La valeur limitée
+  */
   private clamp(value: number, min: number, max: number): number {
     return Math.min(Math.max(value, min), max);
   }
 
+  /**
+   * Calcule le niveau maximum en fonction de la rareté et du stage élite.
+   * @returns Le niveau maximum possible
+   */
   private getMaxLevel(): number {
     const rarity = this.operator?.rarity ?? 0;
     let elite = -1;
@@ -138,6 +162,10 @@ export class ProgressionConfiguratorComponent implements OnInit {
     return this.operatorService.getMaxLevelByRarityAndElite(rarity, elite);
   }
 
+  /**
+   * Vérifie si le champ "elite" et "eliteToReach" ont la même valeur.
+   * @returns Vrai si les valeurs sont identiques, sinon faux.
+   */
   checkEliteEquality(): boolean {
     const eliteControl = this.fGroup.get('elite');
     const eliteToReachControl = this.fGroup.get('eliteToReach');
@@ -150,6 +178,9 @@ export class ProgressionConfiguratorComponent implements OnInit {
   }
 
 
+  /**
+   * Valide et contraint le champ "level" à une valeur comprise entre 1 et le niveau maximum.
+   */
   handleLevelValidation(): void {
     const levelControl = this.fGroup.get('level');
     if (!levelControl) return;
@@ -158,6 +189,12 @@ export class ProgressionConfiguratorComponent implements OnInit {
 
   }
 
+  /**
+   * Valide et ajuste un contrôle en le limitant à une plage spécifique.
+   * @param control Le contrôle à valider
+   * @param min Valeur minimale
+   * @param max Valeur maximale
+   */
   validateAndConstrainControl(control: AbstractControl, min: number, max: number): void {
     const { value: controlValue } = control;
     const constrainedValue = this.clamp(controlValue, min, max);
@@ -165,6 +202,9 @@ export class ProgressionConfiguratorComponent implements OnInit {
 
   }
 
+  /**
+  * Valide et ajuste le champ "levelToReach" selon la valeur d'élite et le niveau maximum.
+  */
   handleLevelToReachValidation(): void {
 
     const levelToReachControl = this.fGroup.get('levelToReach');
@@ -177,6 +217,11 @@ export class ProgressionConfiguratorComponent implements OnInit {
     }
   }
 
+  /**
+  * Met à jour les champs de formulaire et calcule le niveau maximum en fonction de la rareté et du stage élite.
+  * @param rarity Rareté de l'opérateur
+  * @param elite Stage élite actuel
+  */
   updateForms(rarity: number, elite: number): void {
     this.checkFieldsToEnable(rarity);
     this.maxLevel = this.operatorService.getMaxLevelByRarityAndElite(rarity, elite);
@@ -184,11 +229,19 @@ export class ProgressionConfiguratorComponent implements OnInit {
   }
 
 
+  /**
+ * Met à jour les dépendances et le niveau maximum lorsque la valeur du champ "elite" change.
+ */
   onEliteChange(): void {
     this.updateDependantField('elite', 'eliteToReach');
     this.updateMaxLevelFieldWithElite(this.fGroup.get('eliteToReach')?.value);
   }
 
+  /**
+   * Met à jour un champ dépendant pour garantir que sa valeur est cohérente avec le champ principal.
+   * @param primaryField Nom du champ principal
+   * @param dependentField Nom du champ dépendant
+   */
   updateDependantField(
     primaryField: string,
     dependentField: string
@@ -202,6 +255,10 @@ export class ProgressionConfiguratorComponent implements OnInit {
     }
   }
 
+  /**
+   * Met à jour le niveau maximum en fonction du stage élite sélectionné.
+   * @param elite Stage élite
+   */
   updateMaxLevelFieldWithElite(elite: number) {
     const levelToReachField = this.fGroup.get('levelToReach');
     const newMaxLevel = this.operator ? this.operatorService.getMaxLevelByRarityAndElite(this.operator.rarity, elite) : 0;
@@ -211,6 +268,9 @@ export class ProgressionConfiguratorComponent implements OnInit {
   }
 
 
+  /**
+   * Gère la logique liée au changement de la compétence maximale atteignable (skillToReach).
+   */
   onSkillToReachChange(): void {
     const skillToReachValue = this.fGroup.get('skillToReach')?.value;
     if (skillToReachValue < 7) {
