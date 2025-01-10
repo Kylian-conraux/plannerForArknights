@@ -20,7 +20,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Level</mat-label>
             <input matInput type="number" formControlName="level" min="1" [max]="maxLevel"
-                (blur)="handleLevelToReachValidation()">
+                (blur)="handleLevelValidation()">
         </mat-form-field>
 
         <!--Skill dropdown -->
@@ -59,7 +59,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Level to reach</mat-label>
             <input matInput id="levelToReach" type="number" formControlName="levelToReach"
-                [min]="fGroup.get('level')?.value" [max]="maxLevel" (blur)="handleLevelToReachValidation()">
+                [min]="fGroup.get('elite')?.value !== fGroup.get('eliteToReach')?.value ? 1 : fGroup.get('level')?.value" [max]="maxLevel" (blur)="handleLevelToReachValidation()">
         </mat-form-field>
 
         <!-- Skill to reach dropdown -->

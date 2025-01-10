@@ -58,7 +58,7 @@ export class ProgressionConfiguratorComponent implements OnInit {
     }
   }
 
-  private updateEliteOptions(rarity: number): void {  
+  private updateEliteOptions(rarity: number): void {
     if (rarity === 3) {
       this.fGroup.patchValue({ eliteToReach: 1 });
       this.allEliteOptions = [0, 1];
@@ -92,7 +92,7 @@ export class ProgressionConfiguratorComponent implements OnInit {
       }
     });
   }
-  
+
   checkFieldsToEnable(rarity: number): void {
     const fieldsToDisable = [
       this.getField('skill'),
@@ -104,7 +104,7 @@ export class ProgressionConfiguratorComponent implements OnInit {
       this.getField('level'),
       this.getField('levelToReach'),
     ];
-  
+
     if (rarity <= 2) {
       this.disableFields(fieldsToDisable);
       this.enableFields(fieldsToEnable);
@@ -114,25 +114,59 @@ export class ProgressionConfiguratorComponent implements OnInit {
     }
   }
 
-  handleLevelToReachValidation(): void {
-    const levelControl = this.fGroup.get('level');
-    const levelToReachControl = this.fGroup.get('levelToReach');
+  /**
+   * 
+   * @param value   the value to clamp 
+   * @param min   the minimum value
+   * @param max  the maximum value
+   * @returns the value if it is between min and max, otherwise the min or max value
+   */
+  private clamp(value: number, min: number, max: number): number {
+    return Math.min(Math.max(value, min), max);
+  }
+
+  private getMaxLevel(): number {
+    const rarity = this.operator?.rarity ?? 0;
     const elite = this.fGroup.get('elite')?.value;
+    return this.operatorService.getMaxLevelByRarityAndElite(rarity, elite);
+  }
 
-    if (!levelControl || !levelToReachControl) return;
+  checkEliteEquality(): boolean {
+    const eliteControl = this.fGroup.get('elite');
+    const eliteToReachControl = this.fGroup.get('eliteToReach');
 
-    // Constrain 'level' after editing
-    const rarity = this.operator?.rarity ?? 0; // Default to 0 if undefined
-    const maxLevel = this.operatorService.getMaxLevelByRarityAndElite(rarity, elite);
-    const levelValue = Math.min(Math.max(levelControl.value, 1), maxLevel);
-    if (levelControl.value !== levelValue) {
-      levelControl.setValue(levelValue);
+    if (!eliteControl || !eliteToReachControl) {
+      return false;
     }
 
-    // Constrain 'levelToReach' after editing
-    const levelToReachValue = Math.min(Math.max(levelToReachControl.value, levelValue), this.maxLevel);
-    if (levelToReachControl.value !== levelToReachValue) {//check if we need to update the forms
-      levelToReachControl.setValue(levelToReachValue, { emitEvent: false });
+    return eliteControl.value === eliteToReachControl.value;
+  }
+
+
+  handleLevelValidation(): void {
+    const levelControl = this.fGroup.get('level');
+    if (!levelControl) return;
+    const maxLevelofElite = this.getMaxLevel();
+    this.validateAndConstrainControl(levelControl, 1, maxLevelofElite);
+
+  }
+
+  validateAndConstrainControl(control: AbstractControl, min: number, max: number): void {
+    const { value: controlValue } = control;
+    const constrainedValue = this.clamp(controlValue, min, max);
+    control.setValue(constrainedValue);
+
+  }
+
+  handleLevelToReachValidation(): void {
+
+    const levelToReachControl = this.fGroup.get('levelToReach');
+    let checkEliteEquality = this.checkEliteEquality();
+    if (!levelToReachControl) return;
+    if(!checkEliteEquality){
+    this.validateAndConstrainControl(levelToReachControl, 1, this.maxLevel);
+    }else{
+      this.validateAndConstrainControl(levelToReachControl, this.fGroup.get('level')?.value, this.maxLevel);
     }
   }
 
