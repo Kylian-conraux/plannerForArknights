@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { Operator } from '../../../../../data/models/operator/operator.model';
 import { OperatorService } from '../../../../../core/services/operator.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-progression-configurator',
@@ -37,14 +37,18 @@ export class ProgressionConfiguratorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const skillField = this.fGroup.get('skill');
-    const skillToReachField = this.fGroup.get('skillToReach');
-    const eliteField = this.fGroup.get('elite');
-    const eliteToReachField = this.fGroup.get('eliteToReach');
-    const levelField = this.fGroup.get('level');
-    const levelToReachField = this.fGroup.get('levelToReach');
+
+    const fields = [
+      this.getField('skill'),
+      this.getField('skillToReach'),
+      this.getField('elite'),
+      this.getField('eliteToReach'),
+      this.getField('level'),
+      this.getField('levelToReach'),
+    ];
+
     if (!this.operator) {
-     this.disableFields([skillField, skillToReachField, eliteField, eliteToReachField, levelField, levelToReachField]);
+      this.disableFields(fields);
     }
   }
 
@@ -54,49 +58,73 @@ export class ProgressionConfiguratorComponent implements OnInit {
     }
   }
 
-  enableFields(fields: any): void {
-    fields.forEach((field: any) => field.enable());
-  }
-
-  disableFields(fields: any): void {
-    fields.forEach((field: any) => field.disable());
-  }
-
-  checkFieldsToEnable(rarity: number): void{
-    const skillField = this.fGroup.get('skill');
-    const skillToReachField = this.fGroup.get('skillToReach');
-    const eliteField = this.fGroup.get('elite');
-    const eliteToReachField = this.fGroup.get('eliteToReach');
-    const levelField = this.fGroup.get('level');
-    const levelToReachField = this.fGroup.get('levelToReach');
-
-    if (rarity <= 2) {
-      this.disableFields([skillField, skillToReachField, eliteField, eliteToReachField]);
-      this.enableFields([levelField, levelToReachField]);
-    } else{
-      this.enableFields([skillField, skillToReachField, eliteField, eliteToReachField, levelField, levelToReachField]);
-      if (rarity === 3) {
-        eliteToReachField?.setValue(1);
-        this.fGroup.patchValue({ eliteToReach: 1 });
-        this.allEliteOptions = [0, 1];
-      } else {
-        this.allEliteOptions = [0, 1, 2];
-        eliteToReachField?.setValue(2);
-        this.fGroup.patchValue({ eliteToReach: 2 });
-      }
+  private updateEliteOptions(rarity: number): void {  
+    if (rarity === 3) {
+      this.fGroup.patchValue({ eliteToReach: 1 });
+      this.allEliteOptions = [0, 1];
+    } else {
+      this.fGroup.patchValue({ eliteToReach: 2 });
+      this.allEliteOptions = [0, 1, 2];
     }
-     
+  }
+
+  private getField(fieldName: string): AbstractControl {
+    const field = this.fGroup.get(fieldName);
+    if (!field) {
+      throw new Error(`Field '${fieldName}' not found in the form group.`);
+    }
+    return field;
+  }
+
+
+  enableFields(fields: AbstractControl[]): void {
+    fields.forEach((field: AbstractControl) => {
+      if (!field.enabled) {
+        field.enable();
+      }
+    });
+  }
+
+  disableFields(fields: AbstractControl[]): void {
+    fields.forEach((field: AbstractControl) => {
+      if (field.enabled) {
+        field.disable();
+      }
+    });
+  }
+  
+  checkFieldsToEnable(rarity: number): void {
+    const fieldsToDisable = [
+      this.getField('skill'),
+      this.getField('skillToReach'),
+      this.getField('elite'),
+      this.getField('eliteToReach'),
+    ];
+    const fieldsToEnable = [
+      this.getField('level'),
+      this.getField('levelToReach'),
+    ];
+  
+    if (rarity <= 2) {
+      this.disableFields(fieldsToDisable);
+      this.enableFields(fieldsToEnable);
+    } else {
+      this.enableFields([...fieldsToDisable, ...fieldsToEnable]);
+      this.updateEliteOptions(rarity);
+    }
   }
 
   handleLevelToReachValidation(): void {
     const levelControl = this.fGroup.get('level');
     const levelToReachControl = this.fGroup.get('levelToReach');
+    const elite = this.fGroup.get('elite')?.value;
 
     if (!levelControl || !levelToReachControl) return;
 
     // Constrain 'level' after editing
-    const levelValue = Math.min(Math.max(levelControl.value, 1), this.maxLevel); //[min : 1 ; max : this.maxLevel] 
-    console.log('levelValue', levelValue);
+    const rarity = this.operator?.rarity ?? 0; // Default to 0 if undefined
+    const maxLevel = this.operatorService.getMaxLevelByRarityAndElite(rarity, elite);
+    const levelValue = Math.min(Math.max(levelControl.value, 1), maxLevel);
     if (levelControl.value !== levelValue) {
       levelControl.setValue(levelValue);
     }
