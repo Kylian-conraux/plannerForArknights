@@ -63,9 +63,13 @@ export class ProgressionConfiguratorComponent implements OnInit {
   * @param rarity Rareté de l'opérateur
   */
   private updateEliteOptions(rarity: number): void {
+
     if (rarity === 3) {
       this.fGroup.patchValue({ eliteToReach: 1 });
       this.allEliteOptions = [0, 1];
+      if (this.fGroup.get('elite')?.value === 2) {
+        this.fGroup.patchValue({ elite: 1 });
+      }
     } else {
       this.fGroup.patchValue({ eliteToReach: 2 });
       this.allEliteOptions = [0, 1, 2];
