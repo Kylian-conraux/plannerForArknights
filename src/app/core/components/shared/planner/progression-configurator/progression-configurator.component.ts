@@ -127,7 +127,14 @@ export class ProgressionConfiguratorComponent implements OnInit {
 
   private getMaxLevel(): number {
     const rarity = this.operator?.rarity ?? 0;
-    const elite = this.fGroup.get('elite')?.value;
+    let elite = -1;
+    let eliteField = this.getField('elite');
+    if (eliteField.disabled) {
+      elite = this.operator?.elite ?? 0;
+    } else {
+      elite = this.fGroup.get('elite')?.value;
+    }
+
     return this.operatorService.getMaxLevelByRarityAndElite(rarity, elite);
   }
 
@@ -163,9 +170,9 @@ export class ProgressionConfiguratorComponent implements OnInit {
     const levelToReachControl = this.fGroup.get('levelToReach');
     let checkEliteEquality = this.checkEliteEquality();
     if (!levelToReachControl) return;
-    if(!checkEliteEquality){
-    this.validateAndConstrainControl(levelToReachControl, 1, this.maxLevel);
-    }else{
+    if (!checkEliteEquality) {
+      this.validateAndConstrainControl(levelToReachControl, 1, this.maxLevel);
+    } else {
       this.validateAndConstrainControl(levelToReachControl, this.fGroup.get('level')?.value, this.maxLevel);
     }
   }
