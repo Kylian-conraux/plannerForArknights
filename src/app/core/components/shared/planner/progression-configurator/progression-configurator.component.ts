@@ -37,7 +37,15 @@ export class ProgressionConfiguratorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    const skillField = this.fGroup.get('skill');
+    const skillToReachField = this.fGroup.get('skillToReach');
+    const eliteField = this.fGroup.get('elite');
+    const eliteToReachField = this.fGroup.get('eliteToReach');
+    const levelField = this.fGroup.get('level');
+    const levelToReachField = this.fGroup.get('levelToReach');
+    if (!this.operator) {
+     this.disableFields([skillField, skillToReachField, eliteField, eliteToReachField, levelField, levelToReachField]);
+    }
   }
 
   ngOnChanges(): void {
@@ -46,11 +54,43 @@ export class ProgressionConfiguratorComponent implements OnInit {
     }
   }
 
+  enableFields(fields: any): void {
+    fields.forEach((field: any) => field.enable());
+  }
+
+  disableFields(fields: any): void {
+    fields.forEach((field: any) => field.disable());
+  }
+
+  checkFieldsToEnable(rarity: number): void{
+    const skillField = this.fGroup.get('skill');
+    const skillToReachField = this.fGroup.get('skillToReach');
+    const eliteField = this.fGroup.get('elite');
+    const eliteToReachField = this.fGroup.get('eliteToReach');
+    const levelField = this.fGroup.get('level');
+    const levelToReachField = this.fGroup.get('levelToReach');
+
+    if (rarity <= 2) {
+      this.disableFields([skillField, skillToReachField, eliteField, eliteToReachField]);
+      this.enableFields([levelField, levelToReachField]);
+    } else{
+      this.enableFields([skillField, skillToReachField, eliteField, eliteToReachField, levelField, levelToReachField]);
+      if (rarity === 3) {
+        eliteToReachField?.setValue(1);
+        this.fGroup.patchValue({ eliteToReach: 1 });
+        this.allEliteOptions = [0, 1];
+      } else {
+        this.allEliteOptions = [0, 1, 2];
+        eliteToReachField?.setValue(2);
+        this.fGroup.patchValue({ eliteToReach: 2 });
+      }
+    }
+     
+  }
+
   handleLevelToReachValidation(): void {
     const levelControl = this.fGroup.get('level');
-    console.log('levelControl', levelControl?.value);
     const levelToReachControl = this.fGroup.get('levelToReach');
-    console.log('levelToReachControl', levelToReachControl?.value);
 
     if (!levelControl || !levelToReachControl) return;
 
@@ -69,26 +109,7 @@ export class ProgressionConfiguratorComponent implements OnInit {
   }
 
   updateForms(rarity: number, elite: number): void {
-    const skillField = this.fGroup.get('skill');
-    const skillToReachField = this.fGroup.get('skillToReach');
-    const eliteField = this.fGroup.get('elite');
-    const eliteToReachField = this.fGroup.get('eliteToReach');
-
-    if (rarity <= 2) {
-      eliteToReachField?.setValue(0);
-      [skillField, skillToReachField, eliteField, eliteToReachField].forEach((field) => field?.disable());
-    } else if (rarity === 3) {
-      [skillField, skillToReachField, eliteField, eliteToReachField].forEach((field) => field?.enable());
-      eliteToReachField?.setValue(1);
-      this.fGroup.patchValue({ eliteToReach: 1 });
-      this.allEliteOptions = [0, 1];
-    } else {
-      [skillField, skillToReachField, eliteField, eliteToReachField].forEach((field) => field?.enable());
-      this.allEliteOptions = [0, 1, 2];
-      eliteToReachField?.setValue(2);
-      this.fGroup.patchValue({ eliteToReach: 2 });
-    }
-
+    this.checkFieldsToEnable(rarity);
     this.maxLevel = this.operatorService.getMaxLevelByRarityAndElite(rarity, elite);
     this.fGroup.get('levelToReach')?.setValue(this.maxLevel);
   }
