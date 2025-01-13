@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -7,7 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { Operator } from '../../../../../data/models/operator/operator.model';
 import { OperatorService } from '../../../../../core/services/operator.service';
-import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-progression-configurator',
@@ -17,7 +18,8 @@ import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule } from '@a
 })
 export class ProgressionConfiguratorComponent implements OnInit {
 
-  fGroup!: FormGroup;
+  @Input() fGroup!: FormGroup;
+  @Output() formChange = new EventEmitter<any>();
 
   @Input() operator: Operator | undefined = undefined;
 
@@ -25,18 +27,15 @@ export class ProgressionConfiguratorComponent implements OnInit {
   allEliteOptions = [0, 1, 2];
   maxLevel!: number;
 
-  constructor(private fBuilder: FormBuilder, private operatorService: OperatorService) {
-    this.fGroup = this.fBuilder.group({//create with default value
-      level: [1],
-      elite: [0],
-      skill: [1],
-      levelToReach: [90],
-      eliteToReach: [2],
-      skillToReach: [7]
-    });
+  constructor(private operatorService: OperatorService) {
+    
   }
 
   ngOnInit(): void {
+    
+    this.fGroup.valueChanges.subscribe(value => {
+      this.formChange.emit(value);
+    });
 
     const fields = [
       this.getField('skill'),

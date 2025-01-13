@@ -17,6 +17,7 @@ export class OperatorListComponent {
   @Output() pageChange = new EventEmitter<number>();
 
   @Output() operatorClick = new EventEmitter<Operator>();
+  
   onOperatorClick(operator: Operator): void {
     this.operatorClick.emit(operator);
   }

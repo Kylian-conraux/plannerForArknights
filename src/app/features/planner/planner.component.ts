@@ -39,6 +39,8 @@ export class PlannerComponent extends BaseOperatorListPageComponent {
   }
 
   onFormChange(event: Event): void {
-    console.log('form changed', event);
+    if(this.operator) {
+    
+    }
   }
 }
