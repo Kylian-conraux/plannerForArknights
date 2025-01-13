@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
+import { PromotionCost } from '../../data/models/promotion/promotion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +11,16 @@ export class PromotionsService {
 
   private apiUrl = 'http://localhost:3000/promotions';
 
-  private promotionsCache: any[] = [];
+  private promotionsCache: PromotionCost[] = [];
   constructor(private http: HttpClient) { }
 
-  getPromotions(): Observable<any[]> {
+  getPromotions(): Observable<PromotionCost[]> {
     if (this.promotionsCache.length > 0) {
       return of(this.promotionsCache);
     }
 
-    return this.http.get<Promotion[]>(this.apiUrl).pipe(
-      tap((data: Promotion[]) => {
+    return this.http.get<PromotionCost[]>(this.apiUrl).pipe(
+      tap((data: PromotionCost[]) => {
         this.promotionsCache = data;
       }),
       catchError(this.handleError)  
