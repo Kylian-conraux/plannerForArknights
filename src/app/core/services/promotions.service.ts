@@ -23,12 +23,22 @@ export class PromotionsService {
       tap((data: PromotionCost[]) => {
         this.promotionsCache = data;
       }),
-      catchError(this.handleError)  
+      catchError(this.handleError)
     );
   }
 
   private handleError(error: HttpErrorResponse) {
     console.error('An error occurred:', error.message);
     return throwError(() => new Error('Something went wrong; please try again later.'));
-  } 
+  }
+
+  getPromotionByRarity(rarity: number): Observable<PromotionCost> {
+    const cachedPromotion = this.promotionsCache.find(promotion => promotion.rarity === rarity);
+    if (cachedPromotion) {
+      return of(cachedPromotion);
+    }
+    return this.http.get<PromotionCost>(`${this.apiUrl}/${rarity}`).pipe(
+      catchError(this.handleError)
+    );
+  }
 }
