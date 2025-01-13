@@ -7,6 +7,10 @@
     <app-progression-configurator [operator]="operator" [fGroup]="formGroup" (formChange)="onFormChange($event)"></app-progression-configurator>    
 </div>
 
+<div class="container-operator-calculator">
+    <app-progression-calculator [operator]="operator" [formGroup]="formGroup"></app-progression-calculator>
+</div>
+
 
 <div class="container-operator-list">
     <app-filter-container [opFilter]="filters" (filterChange)="onFiltersChange($event)"></app-filter-container>

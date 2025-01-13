@@ -8,10 +8,11 @@ import { FilterContainerComponent } from "../../core/components/filter-container
 import { OperatorListComponent } from '../../core/components/shared/operator-list/operator-list.component';
 import { BaseOperatorListPageComponent } from '../../core/components/shared/base-page-operator-list/base-operator-list-page.component';
 import { ProgressionConfiguratorComponent } from '../../core/components/shared/planner/progression-configurator/progression-configurator.component';
+import { ProgressionCalculatorComponent } from '../../core/components/shared/planner/progression-calculator/progression-calculator.component';
 
 @Component({
   selector: 'app-planner',
-  imports: [OperatorListComponent, FilterContainerComponent, CommonModule, ReactiveFormsModule, ProgressionConfiguratorComponent],
+  imports: [OperatorListComponent, FilterContainerComponent, CommonModule, ReactiveFormsModule, ProgressionConfiguratorComponent, ProgressionCalculatorComponent],
   templateUrl: './planner.component.html',
   styleUrl: './planner.component.scss'
 })
