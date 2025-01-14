@@ -9,7 +9,7 @@ import { PromotionCost } from '../../data/models/promotion/promotion.model';
 })
 export class PromotionsService {
 
-  private apiUrl = 'http://localhost:3000/promotions';
+  private apiUrl = 'http://localhost:3000/promotion-cost';
 
   private promotionsCache: PromotionCost[] = [];
   constructor(private http: HttpClient) { }
