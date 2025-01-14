@@ -26,10 +26,7 @@ export class ProgressionCalculatorComponent implements OnInit, OnChanges, OnDest
   }
 
   ngOnInit(): void {
-    this.formGroup.valueChanges.subscribe(value => {
-      this.calulatePromotion();
-    });
-
+   
     this.promotionService.getPromotions().subscribe({
       next: (data) => {
         console.log('Promotions', data);
@@ -44,7 +41,8 @@ export class ProgressionCalculatorComponent implements OnInit, OnChanges, OnDest
   }
 
   ngOnChanges(): void {
-    console.log('Operator changed', this.operator);
+    console.log('Operator changed (from calculator) : ', this.operator);
+    this.calulatePromotion();
   }
 
   ngOnDestroy(): void {
