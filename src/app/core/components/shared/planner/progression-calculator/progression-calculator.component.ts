@@ -52,14 +52,19 @@ export class ProgressionCalculatorComponent implements OnInit, OnDestroy {
   }
 
   calulatePromotion(): void {
+    
     let elite = this.formGroup.get('elite');
     let eliteToReach = this.formGroup.get('eliteToReach');
 
     if (this.operator) {
-      let promotionCost = this.promotionCosts.find(promotion => promotion.rarity === this.operator?.rarity);
-      if (promotionCost) {
-        this.coutPromotion = this.getTotalCost(elite?.value, eliteToReach?.value, promotionCost);
-        console.log('Promotion cost : ', this.coutPromotion);
+      if(this.operator.rarity<3){
+        this.coutPromotion = 0;
+      }else{
+        let promotionCost = this.promotionCosts.find(promotion => promotion.rarity === this.operator?.rarity);
+        if (promotionCost) {
+          this.coutPromotion = this.getTotalCost(elite?.value, eliteToReach?.value, promotionCost);
+          console.log('Promotion cost : ', this.coutPromotion);
+        }
       }
     }
   }
