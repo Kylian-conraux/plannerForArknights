@@ -1,9 +1,9 @@
 export interface Promotion {
     elite: number;
-    cout: number;
+    cost: number;
 }
 
 export interface PromotionCost {
     rarity: number;
-    promotion: Promotion;
+    promotion: Promotion[];
 }

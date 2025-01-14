@@ -5,7 +5,7 @@ import { FormGroup } from '@angular/forms';
 
 import { PromotionsService } from '../../../../services/promotions.service';
 import { Subscription } from 'rxjs';
-import { PromotionCost } from '../../../../../data/models/promotion/promotion.model';
+import { PromotionCost, Promotion } from '../../../../../data/models/promotion/promotion.model';
 
 @Component({
   selector: 'app-progression-calculator',
@@ -61,6 +61,9 @@ export class ProgressionCalculatorComponent implements OnInit, OnChanges, OnDest
       let promotionCost = this.promotionCosts.find(promotion => promotion.rarity === this.operator?.rarity);
       if (promotionCost) {
         console.log('Promotion cost', promotionCost);
+        let promo = promotionCost.promotion.find(obj => obj.elite === eliteToReach?.value);
+        console.log('Promo :  ', promo);
+        console.log('Promotion cost : ', promo?.cost);
       }
     }
   }
