@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 
@@ -19,7 +19,6 @@ import { AbstractControl, FormGroup, ReactiveFormsModule } from '@angular/forms'
 export class ProgressionConfiguratorComponent implements OnInit {
 
   @Input() fGroup!: FormGroup;
-  @Output() formChange = new EventEmitter<any>();
 
   @Input() operator: Operator | undefined = undefined;
 
@@ -28,14 +27,10 @@ export class ProgressionConfiguratorComponent implements OnInit {
   maxLevel!: number;
 
   constructor(private operatorService: OperatorService) {
-    
+
   }
 
   ngOnInit(): void {
-    
-    this.fGroup.valueChanges.subscribe(value => {
-      this.formChange.emit(value);
-    });
 
     const fields = [
       this.getField('skill'),
@@ -129,12 +124,25 @@ export class ProgressionConfiguratorComponent implements OnInit {
     ];
 
     if (rarity <= 2) {
+      this.patchMinValues(fieldsToDisable);
       this.disableFields(fieldsToDisable);
       this.enableFields(fieldsToEnable);
     } else {
       this.enableFields([...fieldsToDisable, ...fieldsToEnable]);
       this.updateEliteOptions(rarity);
     }
+  }
+
+  /**
+ * Définit les valeurs minimales pour une liste de champs
+ */
+  patchMinValues(fields: AbstractControl[]): void {
+    fields.forEach(field => {
+      if (field && field.get('min')) { // Vérifiez si un champ a une valeur minimale définie
+        const minValue = field.get('min')?.value || 0;
+        field.patchValue(minValue); // Mettez la valeur minimale
+      }
+    });
   }
 
   /**

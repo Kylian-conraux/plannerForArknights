@@ -32,6 +32,11 @@ export class PlannerComponent extends BaseOperatorListPageComponent {
       eliteToReach: [2],
       skillToReach: [7]
     });
+    
+    this.formGroup.valueChanges.subscribe(() => {
+     // console.log('Form change', this.formGroup.value);
+    });
+
   }
 
 
@@ -39,9 +44,4 @@ export class PlannerComponent extends BaseOperatorListPageComponent {
     this.operator = operator;
   }
 
-  onFormChange(event: Event): void {
-    if(this.operator) {
-    
-    }
-  }
 }
