@@ -48,7 +48,7 @@ export class ProgressionCalculatorComponent implements OnInit, OnChanges, OnDest
   }
 
   ngOnDestroy(): void {
-
+    this.subscription.unsubscribe();
   }
 
   calulatePromotion(): void {
